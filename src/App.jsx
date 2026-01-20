@@ -10,6 +10,7 @@ export default function PhotosApp() {
     const counter = useRef(0)
     console.log("== counter:", counter)
     const [ videoIsPlaying, setVideoIsPlaying ] = useState(false)
+    const [ text, setText ] = useState("")
 
     const firstPhotoRef = useRef(null)
     const secondPhotoRef = useRef(null)
@@ -61,6 +62,10 @@ export default function PhotosApp() {
                     <img src="https://picsum.photos/id/300/480" />
                 </div>
                 <div ref={videoRef}>
+                    <input
+                        value={text}
+                        onChange={e => setText(e.target.value)}
+                    />
                     <VideoPlayer src={kittiesVideo} isPlaying={videoIsPlaying} />
                     <div>
                         <button onClick={() => setVideoIsPlaying(prev => !prev)}>
